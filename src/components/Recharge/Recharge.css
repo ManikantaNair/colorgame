@@ -1,0 +1,85 @@
+.info__section {
+  background: #28b62c !important;
+  width: 100vw !important;
+  padding-top: 1rem;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+
+  text-align: center;
+  color: white;
+  font-size: 1rem;
+}
+
+.contact span {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.balance {
+  margin-top: 2rem !important;
+}
+.recharge__form {
+  width: 85vw;
+  margin: 1rem auto;
+}
+.button__container {
+  width: 60vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.balance__input {
+  width: 100%;
+  height: 3rem;
+  letter-spacing: 0.12rem;
+  border: none;
+  background: transparent;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.buttons {
+  margin: 2rem 1.3rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.recharge__btn__container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.recharge__btn {
+  background-color: #28b62c !important;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 0.7rem 4rem;
+  font-weight: bold;
+
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 768px) {
+  .info__section {
+    padding: 1rem 1rem;
+  }
+  .contact {
+    padding: 0 1rem !important;
+  }
+  .button__container {
+    width: 85vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .buttons {
+    font-size: 0.8rem;
+    margin: 2rem 1.3rem;
+    margin: 1.2rem 0.8rem;
+  }
+  .recharge__btn__container {
+    margin-top: 1rem;
+  }
+}

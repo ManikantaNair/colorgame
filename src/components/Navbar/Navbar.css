@@ -1,0 +1,23 @@
+.nav-link {
+  font-size: 1rem !important;
+}
+
+.dropdown {
+  margin-right: 2.5rem !important;
+}
+
+.something {
+  width: 20vw;
+  height: 30vh;
+  color: white;
+  background-color: black;
+}
+.bg-warning {
+  border-bottom: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.active {
+  font-weight: bold !important;
+  color: black;
+}

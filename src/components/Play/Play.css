@@ -1,0 +1,90 @@
+.balance_wrapper {
+  width: 90vw !important;
+  margin: 0 auto;
+  background-color: #28b62c;
+  height: 8rem;
+}
+.balance_data {
+  color: white;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  font-weight: 600;
+}
+
+.recharge__link {
+  margin-left: 2rem;
+  background: #00b0ff;
+  padding: 0.5rem 1rem;
+  color: white;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  border-radius: 2px;
+}
+
+.rule__btn {
+  padding-top: 0.5rem;
+  padding-bottom: 0.4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+}
+.rule__modal {
+  width: 25vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -200px;
+  background-color: #f8f8f8;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.modal__header {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  background: #f4f4f4;
+}
+
+.modal__close {
+  display: flex;
+  justify-content: flex-end;
+}
+.modal__content {
+  padding: 0 1rem;
+}
+.modal__close button {
+  border: none;
+  background: transparent;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  text-transform: uppercase;
+  outline: none;
+  color: rgb(182, 82, 82);
+}
+
+.recharge__link:hover {
+  color: white;
+  text-decoration: none;
+}
+.recharge__container {
+  margin-top: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .balance_wrapper {
+    width: 100vw !important;
+  }
+  .rule__modal {
+    width: 90vw;
+    left: 60%;
+    top: 30%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1500px) {
+  .rule__modal {
+    width: 35vw;
+    top: 40%;
+  }
+}

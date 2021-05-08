@@ -1,0 +1,78 @@
+.wrapper {
+  width: 100%;
+  background: #f4f4f4;
+  margin-top: 1rem;
+}
+
+.first__child {
+  display: flex;
+  justify-content: space-between;
+}
+.foffchild {
+  padding: 1rem 1rem;
+}
+.soffchild {
+  padding: 1rem 1rem;
+  color: gray;
+}
+.period {
+  color: gray;
+  font-size: 1.5rem;
+}
+.gameid {
+  color: black;
+  font-size: 1.8rem;
+}
+.secondChild {
+  display: flex;
+  justify-content: space-around;
+}
+.color__btns {
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: 700;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  outline: none;
+  border-radius: 3px;
+}
+.red {
+  background-color: rgb(250, 27, 27);
+}
+.green {
+  background-color: #28b62c !important;
+}
+
+.violet {
+  background-color: rgb(83, 83, 228);
+}
+
+.thirdChild {
+  width: 90vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  margin: 1rem auto;
+  padding-bottom: 1rem;
+}
+.num__btn {
+  background: #00b0ff;
+  border: none;
+  outline: none;
+  padding: 0.5rem 10rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 5px;
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .num__btn {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1500px) {
+  .num__btn {
+    padding: 0.5rem 4rem;
+  }
+}

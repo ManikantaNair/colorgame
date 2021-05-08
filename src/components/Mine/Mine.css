@@ -1,0 +1,30 @@
+.me {
+  width: 70vh;
+
+  background-color: rgb(205, 206, 197);
+  text-align: center;
+  margin: 4rem auto;
+  border-radius: 5px;
+}
+
+.me_list {
+  padding: 0.3rem 0;
+  color: black;
+  letter-spacing: 0.125rem;
+}
+
+.play__btn {
+  background-color: black;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .me {
+    width: 90vw;
+  }
+}

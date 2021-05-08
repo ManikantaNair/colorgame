@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Navbar from "./components/Navbar/Navbar";
+import Register from "./components/Register/Register";
+import { Switch, Route } from "react-router-dom";
+import Play from "./components/Play/Play";
+import Login from "./components/Login/Login";
+import Mine from "./components/Mine/Mine";
+import Test from "./components/Test";
+import ChangeNickName from "./components/ChangeNickName";
+import UserRoute from "./components/UserRoute";
+import Recharge from "./components/Recharge/Reacharge";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <ToastContainer />
+
+      <Route exact path='/' component={Register} />
+
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/test' component={Test} />
+      <UserRoute exact path='/:id/changeNickName' component={ChangeNickName} />
+      <UserRoute exact path='/mine' component={Mine} />
+
+      <UserRoute exact path='/play' component={Play} />
+      <UserRoute exact path='/recharge' component={Recharge} />
+    </>
   );
-}
+};
 
 export default App;
