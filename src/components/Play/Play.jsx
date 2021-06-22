@@ -1,19 +1,34 @@
-import React,{useState} from 'react';
+import React,{useState ,useEffect} from 'react';
 import './Play.css';
 import {Link} from 'react-router-dom';
-import Game from '../Game/Game'
+import Game from '../Game/Game';
+import {useSelector, useDispatch} from 'react-redux'
+import {getBalance} from '../../actions/Recharge'
+import ButtonLoader from '../ButtonLoader';
+import Modal from '../Modal/Modal';
+import Results from '../Results/Results';
+import BetModal from '../BetModal/BetModal';
 
 
 const Play = () => {
     const [show, setShow] = useState(false);
+    const dispatch= useDispatch()
+
+    const rechargeUser = useSelector((state) => state.rechargeUser)
+    const { loading, balance} = rechargeUser;
 
     const openModal  = () => {
         setShow(!show)
     }
+
+    useEffect(()=> {
+        dispatch(getBalance())
+       
+      },[dispatch])
     return (
         <>
           <div className="balance_wrapper">
-              <h5 className="balance_data">Available Balance ₹:0.00 </h5>
+              <h5 className="balance_data">Available Balance:{ loading ? <ButtonLoader />:balance ? balance.data.totalBalance: 0.00 } </h5>
               <div className="recharge__container">
               <Link to ="/recharge" className="recharge__link">Recharge</Link>
               <button type="button" className="rule__btn" onClick={openModal}>Read Rule</button>
@@ -22,6 +37,8 @@ const Play = () => {
               
           </div>
           <Game />
+          <Results />
+          <Modal />
        {show && (
          <div className=" rule__modal">
          <div className="modal__header">
@@ -44,8 +61,9 @@ const Play = () => {
          </div>
         </div> 
        )}
-          
+            <BetModal />
         </>
+    
     )
 }
 

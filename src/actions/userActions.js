@@ -1,46 +1,45 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const register = (mobile, email, password, referrerCode) => async (
-  dispatch
-) => {
-  try {
-    dispatch({
-      type: "USER_REGISTER_REQUEST",
-    });
+export const register =
+  (mobile, email, password, referrerCode) => async (dispatch) => {
+    try {
+      dispatch({
+        type: "USER_REGISTER_REQUEST",
+      });
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
 
-    const { data } = await axios.post(
-      "/api/v1/auth/register",
-      { mobile, email, password, referrerCode },
-      config
-    );
+      const { data } = await axios.post(
+        "/api/v1/auth/register",
+        { mobile, email, password, referrerCode },
+        config
+      );
 
-    dispatch({
-      type: "USER_REGISTER_SUCCESS",
-      payload: data,
-    });
+      dispatch({
+        type: "USER_REGISTER_SUCCESS",
+        payload: data,
+      });
 
-    dispatch({
-      type: "USER_LOGIN_SUCCESS",
-      payload: data,
-    });
+      dispatch({
+        type: "USER_LOGIN_SUCCESS",
+        payload: data,
+      });
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
-  } catch (error) {
-    console.log(error.response.data.error);
-    dispatch({
-      type: "USER_REGISTER_FAIL",
-      payload: error.response.data.error,
-    });
-    toast.error(error.response.data.error);
-  }
-};
+      localStorage.setItem("userInfo", JSON.stringify(data));
+    } catch (error) {
+      console.log(error.response.data.error);
+      dispatch({
+        type: "USER_REGISTER_FAIL",
+        payload: error.response.data.error,
+      });
+      toast.error(error.response.data.error);
+    }
+  };
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -100,7 +99,6 @@ export const getUserDetails = () => async (dispatch, getState) => {
     };
 
     const res = await axios.get(`/api/v1/auth/me`, config);
-    console.log(res.data.data);
 
     dispatch({
       type: "USER_DETAILS_SUCCESS",

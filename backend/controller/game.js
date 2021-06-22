@@ -64,6 +64,7 @@ exports.getGameTimer = asyncHandler(async (req, res, next) => {
 
 exports.createGameBet = asyncHandler(async (req, res, next) => {
   const { gameId, amount, colorId } = req.body;
+  console.log(gameId, amount, colorId);
   const bet = new Bet({
     gameId,
     amount,
@@ -111,6 +112,8 @@ exports.calcResult = asyncHandler(async (req, res, next) => {
   ]);
   console.log(bets);
   const numbers = await Number.find({ colorId: bets[0]._id });
+  console.log(numbers);
+
   let numArr = [];
   numbers.forEach((number) => {
     numArr.push(number.numbers);
@@ -130,6 +133,7 @@ exports.calcResult = asyncHandler(async (req, res, next) => {
 });
 
 exports.getResult = asyncHandler(async (req, res, next) => {
+  console.log(req.params.id);
   const game = await Result.find({ gameId: req.params.gameId })
     .populate({
       path: "colorId",

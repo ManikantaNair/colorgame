@@ -26,7 +26,10 @@ export const userLoginReducer = (state = {}, action) => {
   }
 };
 
-export const userDetailReducer = (state = {}, action) => {
+export const userDetailReducer = (
+  state = { userDetails: { user: {}, refUser: [] } },
+  action
+) => {
   switch (action.type) {
     case "USER_DETAILS_REQUEST":
       return { loading: true };
@@ -46,9 +49,9 @@ export const changeNickNameReducer = (state = {}, action) => {
     case "CHANGE_NICKNAME_REQUEST":
       return { loading: true };
     case "CHANGE_NICKNAME_SUCCESS":
-      return { loading: false, success: true, nickname: action.payload };
+      return { loading: false, success: true };
     case "CHANGE_NICKNAME_FAILURE":
-      return { loading: false, error: action.payload };
+      return { loading: false };
     case "REMOVE_NICKNAME":
       return { ...state, loading: true, success: false };
     default:

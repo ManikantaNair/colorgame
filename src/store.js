@@ -7,12 +7,19 @@ import {
   userDetailReducer,
   changeNickNameReducer,
 } from "./reducers/userReducer";
-import { openModalReducer } from "./reducers/ModalReducer";
+import {
+  openModalReducer,
+  openBetModalReducer,
+  colorTypeReducer,
+  buttonNumberReducer,
+} from "./reducers/ModalReducer";
 import { RechargeReducer } from "./reducers/RechargeReducer";
 import {
   getColorsReducer,
   getNumbersReducer,
   getGameReducer,
+  createBetReducer,
+  calcResultReducer,
 } from "./reducers/GameReducer";
 
 const reducer = combineReducers({
@@ -20,12 +27,16 @@ const reducer = combineReducers({
   userLogin: userLoginReducer,
   userDetail: userDetailReducer,
   openModals: openModalReducer,
-
+  openBetModals: openBetModalReducer,
+  buttonNumber: buttonNumberReducer,
+  colorTypes: colorTypeReducer,
   changeNickName: changeNickNameReducer,
   rechargeUser: RechargeReducer,
   getColor: getColorsReducer,
   getNumber: getNumbersReducer,
   getGames: getGameReducer,
+  createBet: createBetReducer,
+  calcResult: calcResultReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

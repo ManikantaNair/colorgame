@@ -69,3 +69,22 @@ export const numbers = [
     number: 9,
   },
 ];
+
+export const buttonNumbers = [
+  {
+    id: 1,
+    number: 10,
+  },
+  {
+    id: 2,
+    number: 100,
+  },
+  {
+    id: 3,
+    number: 1000,
+  },
+  {
+    id: 4,
+    number: 10000,
+  },
+];

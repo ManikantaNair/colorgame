@@ -17,13 +17,51 @@
   z-index: 10;
 }
 .modal__container {
-  background: red;
-  border-radius: var(--radius);
-  width: 70vw;
+  background: #f4f4f4;
+  border-radius: 10px;
+  width: 90vw;
   height: 30vh;
   max-width: var(--fixed-width);
   text-align: center;
   display: grid;
   place-items: center;
   position: relative;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.modal__form {
+  width: 90%;
+}
+
+.modal__input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #f4f4f4;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.modal__change__btn {
+  margin-top: 2rem;
+  border: none;
+  padding: 0.3rem 1rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 5px;
+  color: #f8f8f8;
+  margin-left: 1rem;
+  font-weight: bold;
+  outline: none;
+}
+.modal__input:focus {
+  outline: none !important;
+}
+
+.change {
+  background: #28b62c;
+}
+
+.stop {
+  background: rgb(230, 115, 115);
 }

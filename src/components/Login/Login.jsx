@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux';
 import { toast } from 'react-toastify';
 import {login} from '../../actions/userActions';
+import ButtonLoader from '../ButtonLoader';
 
 
 const Login = ({history}) => {
@@ -16,6 +17,13 @@ const Login = ({history}) => {
     
      
     const dispatch = useDispatch();
+
+    useEffect(() => {
+      if(userInfo){
+        history.push('/mine')
+        toast.success("Login Successful")
+      }
+    },[userInfo])
     
     const loginUser = (e)=> {
       e.preventDefault();
@@ -31,12 +39,7 @@ const Login = ({history}) => {
       else {
         
         dispatch((login(email, password)))
-       
-        
-          history.push('/mine')
-        
-       
-     
+
        
       }
         
@@ -65,7 +68,7 @@ const Login = ({history}) => {
     onChange={(e)=>setPassword(e.target.value)}/>
      </div>
   </div>
-  <button type="submit" class={`btn btn-success btn-block ${email.length > 0 || password.length > 0 ?"":"disabled"} `}>Login</button>
+  <button type="submit" class={`btn btn-success btn-block ${email.length > 0 || password.length > 0 ?"":"disabled"} `}>{loading ? <ButtonLoader />: 'Login'}</button>
   </form>
  </div>
         </>

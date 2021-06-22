@@ -6,6 +6,7 @@ import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import {getBalance} from '../../actions/Recharge'
 import { toast } from 'react-toastify';
+import ButtonLoader from '../ButtonLoader';
 
 const Reacharge = () => {
     const [amounts, setAmounts] = useState('');
@@ -150,7 +151,7 @@ const Reacharge = () => {
 
          </div>
          <h4 className="text-center mt-3 text-danger contact">Any problem ? Contact <span className="text-success">abc@gmail.com</span></h4>
-          <h2 className ="text-center balance">Balance:₹ {balance ? balance.data.totalBalance: 0.00} </h2>
+          <h2 className ="text-center balance">Balance:₹ { loading ? <ButtonLoader /> :balance ? balance.data.totalBalance: 0.00} </h2>
            
           <form className="recharge__form">
               <input type="text" placeholder="Please select recharge amount" className="balance__input" value={amounts} onChange={(e)=> setAmounts(e.target.value)} required/>

@@ -71,12 +71,13 @@ io.on("connection", (socket) => {
 
 const getApiAndEmit = async (socket) => {
   // Emitting a new message. Will be consumed by the client
-  // const game = await Game.findOne({ status: true });
-  // const gameEnd = game.endTime.getTime();
-  // const now = new Date();
-  // const distance = gameEnd - now;
-  // socket.emit("FromAPI", { distance, game });
+  const game = await Game.findOne({ status: true });
+  const gameEnd = game.endTime.getTime();
+  const now = new Date();
+  const distance = gameEnd - now;
+  socket.emit("FromAPI", { distance, game });
 };
+
 
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (err, promise) => {

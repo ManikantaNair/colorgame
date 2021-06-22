@@ -4,6 +4,7 @@ import './Register.css';
 import {useSelector, useDispatch} from 'react-redux';
 import { register } from '../../actions/userActions'
 import { toast } from 'react-toastify';
+import ButtonLoader from '../ButtonLoader';
 
 
 const Register = ({history}) => {
@@ -11,8 +12,8 @@ const Register = ({history}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [referrerCode, setreferrerCode] = useState('');
-  const userRegister = useSelector((state) => state.userRegister)
-  const { loading, error, userInfo } = userRegister;
+  const userLogin= useSelector((state) => state.userLogin)
+  const { loading, error, userInfo } = userLogin;
   const [showPassword, setshowPassword] = useState(false)
    
   const dispatch = useDispatch();
@@ -21,6 +22,13 @@ const Register = ({history}) => {
     console.log('click')
     setshowPassword(!showPassword)
   }
+
+  useEffect(() => {
+    if(userInfo){
+      history.push('/mine')
+   
+    }
+  },[userInfo])
        
   const registerUser = (e) => {
     e.preventDefault()
@@ -29,9 +37,7 @@ const Register = ({history}) => {
    
     }else {
       dispatch(register(mobile,email,password, referrerCode))
-      if(userInfo){
-        history.push('/mine')
-      }
+     
     
     }  
     
@@ -69,7 +75,7 @@ const Register = ({history}) => {
     onChange={(e)=>setreferrerCode(e.target.value)}/>
   </div>
  
-  <button type="submit" class="btn btn-success btn-block">Register</button>
+  <button type="submit" class="btn btn-success btn-block">{loading ? <ButtonLoader /> :'Register'}</button>
 </form>
 </div>
 </>

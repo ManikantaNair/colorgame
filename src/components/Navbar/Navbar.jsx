@@ -31,6 +31,13 @@ const Navbar = () => {
       return history.location.pathname === route
   }
 
+  //  useEffect(()=> {
+  //    if(userInfo){
+  //      history.push('/mine')
+  //    }else {
+  //      history.push('/')
+  //    }
+  //  },[])
  
   
     return (

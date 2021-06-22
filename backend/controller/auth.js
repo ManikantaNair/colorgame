@@ -104,6 +104,6 @@ exports.changeNickName = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    data: user,
+    data: "NickName updated",
   });
 });

@@ -4,7 +4,8 @@ import {useSelector, useDispatch}  from 'react-redux';
 
 import {getUserDetails} from '../../actions/userActions'
 import {useHistory, useLocation} from 'react-router-dom';
-import {changeNickName} from '../../actions/userActions';
+
+import { toast } from 'react-toastify';
 import axios from "axios";
 
 
@@ -18,7 +19,8 @@ const Modal = () => {
     const {  userInfo } = userLogin
 
     const userDetail = useSelector((state) => state.userDetail)
-    const { loading, error, user } = userDetail;
+    const { loading, error, userDetails } = userDetail;
+   
 
     const [nickName, setNickName] = useState('');
   
@@ -26,17 +28,17 @@ const Modal = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const location= useLocation()
+
     useEffect(()=> {
-        
-        if(!user){
+         if(!userDetails){
             dispatch(getUserDetails())
         }else {
-            setNickName(user.nickName)
+            setNickName(userDetails.user.nickName)
         }
-    },[history, user, dispatch])
+    },[history, userDetails, dispatch])
 
     const handleSubmit = (e)=> {
-        console.log(user.data.user._id)
+      
         e.preventDefault()
         // correct code
     //    dispatch(changeNickName(user.data.user._id, nickName))
@@ -60,13 +62,13 @@ const Modal = () => {
       };
   
        axios.put(
-        `/api/v1/auth/${user.data.user._id}/changenickname`,
+        `/api/v1/auth/${userDetails.user._id}/changenickname`,
         body,
         config
-      ).then(({data})=>{
+      ).then(()=>{
           dispatch({
               type:"CHANGE_NICKNAME_SUCCESS",
-              payload:data
+          
           })
           dispatch({
             type:"MODAL_CLOSE",
@@ -78,8 +80,15 @@ const Modal = () => {
           })
        
       })
-
       
+      toast.success('Nickname Changed')
+      
+    }
+
+    const closeModals = () => {
+      dispatch({
+        type:"MODAL_CLOSE"
+      })
     }
 
     return (
@@ -89,9 +98,10 @@ const Modal = () => {
         }`}
       >
             <div className="modal__container">
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={nickName} onChange={(e)=>setNickName(e.target.value)}/>
-                <button type="submit">Change</button>
+            <form onSubmit={handleSubmit} className="modal__form">
+                <input type="text" value={nickName} onChange={(e)=>setNickName(e.target.value)} className="modal__input"/>
+                <button type="submit" className="modal__change__btn change">Change</button>
+                <button type="button" className="modal__change__btn stop" onClick={closeModals}>Close</button>
             </form>
            
             </div>

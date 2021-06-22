@@ -4,6 +4,7 @@ import {getUserDetails} from '../../actions/userActions'
 import {Link} from 'react-router-dom'
 import './Mine.css';
 import Modal from '../Modal/Modal';
+import ButtonLoader from '../ButtonLoader';
 
 const Mine = ({history}) => {
 
@@ -13,10 +14,10 @@ const Mine = ({history}) => {
     const {  userInfo } = userLogin
 
     const userDetail = useSelector((state) => state.userDetail)
-    const {  userDetails} = userDetail;
+    const { loading,  userDetails} = userDetail;
 
    
-  console.log(userDetails)
+  
 
      
     useEffect(()=> {
@@ -25,13 +26,17 @@ const Mine = ({history}) => {
         }
  
       
-    }, [dispatch])
+    }, [dispatch, userInfo])
      
 
 
     return (
+        <>
+     
         <div className="main__bg">
+        {loading && <ButtonLoader />}
         <div className="me">
+        
            {userDetails && (
             <>
             <h4 className="me_list">Your Game Id :{userDetails.user.userGameId}</h4>
@@ -44,17 +49,19 @@ const Mine = ({history}) => {
                  
                 <h5 className="me_list">{rf.email}</h5>
             ))}</h5>:<h5 className="me_list">Please Refer someone to win exciting Prices</h5>}
+             <Link to="/play" className="play__btn">Play Now</Link>
             </>
            )}
                
         
-            <Link to="/play" className="play__btn">Play Now</Link>
+           
         </div>
       <Modal />
 
         </div>
-
-
+     
+        
+     </>
     )
 }
 

@@ -1,0 +1,35 @@
+.table__container {
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.table__main {
+  width: 100%;
+}
+.table__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+  border: 1px solid rgb(117, 113, 113);
+}
+.table__row__child {
+  padding: 0.8rem 0;
+}
+
+.green_unde {
+  height: 1rem;
+  background: green;
+  width: 1rem;
+  border-radius: 50%;
+}
+
+.red__unde {
+  height: 1rem;
+  background: red;
+  width: 1rem;
+  border-radius: 50%;
+}
+
+.table__main__head {
+  padding: 0.8rem 0;
+}

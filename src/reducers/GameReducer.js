@@ -39,3 +39,31 @@ export const getGameReducer = (state = { game: {} }, action) => {
       return state;
   }
 };
+
+export const createBetReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "CREATE_BET_REQUEST":
+      return { loading: true };
+    case "CREATE_BET_SUCCESS":
+      return { loading: false, betUpdate: action.payload };
+    case "CREATE_BET_FAIL":
+      return { loading: false, error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+export const calcResultReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "CALC_RESULT_REQUEST":
+      return { loading: true };
+    case "CALC_RESULT_SUCCESS":
+      return { loading: false };
+    case "CALC_RESULT_FAIL":
+      return { loading: false };
+
+    default:
+      return state;
+  }
+};

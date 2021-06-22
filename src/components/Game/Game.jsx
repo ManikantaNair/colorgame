@@ -3,11 +3,15 @@ import './Game.css';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {getColors} from '../../actions/gameActions';
-import {getNumbers, getGame} from '../../actions/gameActions'
+import {getNumbers, getGame,calcResult} from '../../actions/gameActions'
 import {useHistory} from 'react-router-dom'
 import axios from 'axios';
 import {useLocation}  from 'react-router-dom';
 import socketIOClient from "socket.io-client";
+import Colors from '../Colors/Colors';
+import BetModal from '../BetModal/BetModal';
+import { toast } from 'react-toastify';
+import {getBalance} from '../../actions/Recharge'
 
 const CONNECTION_PORT = 'http://localhost:5000/'
 const Game = () => {
@@ -32,17 +36,17 @@ const getColor = useSelector((state) => state.getColor)
 
     const getGames = useSelector((state) => state.getGames)
     const {game} = getGames;
+    
+    const createBet = useSelector((state) => state.createBet)
+    const {betUpdate} = createBet;
+    
+
     const userLogin = useSelector((state) => state.userLogin)
     const {  userInfo } = userLogin
 
    const getGameTimer = async()=>{
         const res = await axios.get('/api/v1/game/timer');
-         
-       
-        const countDownDate = res.data.date;
-      
-         
-        
+          const countDownDate = res.data.date;
          setDate(countDownDate)
        
       }
@@ -105,13 +109,30 @@ const getColor = useSelector((state) => state.getColor)
 
 //   startTimer();
 
+//    useEffect(()=> {
+//        setTimeout(async()=> {
+//         const response = await axios.get(`/api/v1/game`) 
+    
+//         const config={
+//             headers:{
+//                 Authorization:`Bearer ${userInfo.token}`
+//             }
+//         }
+//         const result = await axios.get(`/api/v1/game/sendcash/${response.data.game._id}`, config)
+//          toast(result.data.message ? result.data.message:"Better luck next time")
+//          dispatch(getBalance())
+//        },180000)
+    
+//    },[])
+
+
   useEffect(() => {
     const socket = socketIOClient(CONNECTION_PORT);
     socket.on("FromAPI", data => {
-         console.log(data)
+      
         setGames(data.game.gamePeriodId)
         let min = Math.floor((data.distance %(1000 * 60 * 60)) / (1000 *60));
-       console.log(min)
+      
         setMinutess(min);
 
         let  sec = Math.floor((data.distance %(1000 *60))/1000);
@@ -145,9 +166,12 @@ const getColor = useSelector((state) => state.getColor)
                     <>
                   
                       {colors.map((color)=>(
-                             <button className={`color__btns ${color.color}`}>Join {color.colorName}</button>
+                          <div key={color._id}>
+                          <Colors color={{...color}}/>
+                       
+                          </div>
                       ))}
-                 
+                
                   </>
                 )}
                
@@ -167,7 +191,7 @@ const getColor = useSelector((state) => state.getColor)
  
              
  )}
-
+ 
          </div>
        
            
